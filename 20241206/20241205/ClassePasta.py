@@ -21,7 +21,8 @@ class Pasta(object):
 		#end = input("Entre com o endereco do arquivo: ")
 		NomesArquivos = ["Raja", "Francisco", "Luciano", "Ricardo", "Rotundo"] 
 		nome = NomesArquivos[random.randint(0,len(NomesArquivos)-1)]
-		end = dt.datetime.now()
+		end = dt.datetime.now()#Endereço com string da Date Time.
+		endereco = end.timestamp()#Endereço com momento unix.
 		#Arquivo será referenciado por um dicionario.		
 		if self.documento.get(nome)==None: 
 			self.documento[nome] = end

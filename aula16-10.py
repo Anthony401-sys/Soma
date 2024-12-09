@@ -28,5 +28,4 @@ def forma_3leitura_array():
 if __name__ == '__main__':
     #vetor()
     #forma_2leitura()
-    #forma_3leitura_array()
-    
+    forma_3leitura_array()
