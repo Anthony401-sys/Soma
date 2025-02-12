@@ -41,26 +41,35 @@ def _command_SetButton():
 	
 
 def _command_limpar():
-	valor_visor.set("")
+	valor_visor2.set("0")
+	strg1 = str(valor_visor1.get())
+	valor_visor1.set("ants = " + str(strg1))
 
 def _command_tecla(evento):#Evento é string
-	strg = valor_visor.get()
+	strg = valor_visor2.get()
 	if strg == "Calculadora ligada":
-		valor_visor.set("")
-	valor_visor.set(valor_visor.get()+evento)
+		valor_visor2.set("")
+	valor_visor2.set(valor_visor2.get()+evento)
 
 #Funcao para o botao =
 def _command_calcular():
 	Ncasas = 3
-	strg = valor_visor.get()
+	strg = valor_visor2.get()
 	resultado = str(eval(strg))
 	strg+="="
 	SaidaTruncada=TruncadorStringNumerica(resultado, Ncasas)
 	strg+=str(SaidaTruncada)
 	if RadioButtonVar.get()==1: 
-		valor_visor.set(str(SaidaTruncada))
+		valor_visor2.set(str(SaidaTruncada))
+		strg2 = str(SaidaTruncada) + "=" + strg
+		strg2.split("=")
+		valor_visor1.set(str(strg2[1]))
 	else: 	
-		valor_visor.set(strg)
+		valor_visor2.set(strg)
+	strg2 = strg +"="+SaidaTruncada
+	strg2 = strg2.split("=")
+	P_visor = strg2[1]
+	valor_visor1.set(P_visor)
 
 janela = tk.Tk()
 janela.title("Calc parte 2")
@@ -71,22 +80,22 @@ frame_visor=tk.Frame(janela, width = 240, height = 200, bg=PC.CorCinzaClaro )#Cr
 					#bg = background - cor de fundo. 
 frame_visor.grid(row = 0, column =0) #Insere o frame usando grid
 
-valor_visor = tk.StringVar() #Variavel para entrar no visor 
-valor_visor.set("Calculadora ligada")
-visor_label = tk.Label(frame_visor, textvariable= valor_visor, width = 28, height = 2, padx = 7)
-visor_label.place(x=0, y=0) 
-
-valor_visor2 = tk.StringVar()
-valor_visor2.set("")
+valor_visor2= tk.StringVar() #Variavel para entrar no visor 
+valor_visor2.set("Calculadora ligada")
 visor_label2 = tk.Label(frame_visor, textvariable= valor_visor2, width = 28, height = 2, padx = 7)
-visor_label2.place(x=0, y=50)
+visor_label2.place(x=0, y=0) 
+
+valor_visor1 = tk.StringVar()
+valor_visor1.set("")
+visor_label1 = tk.Label(frame_visor, textvariable= valor_visor1, width = 28, height = 2, padx = 7)
+visor_label1.place(x=0, y=50)
 
 #Introducao do radiobutton
 RadioButtonVar = tk.IntVar()
 RB1=tk.Radiobutton(frame_visor, text = "Modo 1", variable = RadioButtonVar, value = 1, command=_command_SetButton)
-RB1.place(x=0, y=100)
+RB1.place(x=0, y=0)
 RB2=tk.Radiobutton(frame_visor, text = "Modo 2", variable = RadioButtonVar, value = 2, command=_command_SetButton)
-RB2.place(x=0, y=130)
+RB2.place(x=0, y=50)
 
 #Criacao do frame botoes
 frame_botoes = tk.Frame(janela, width = 240, height = 300, bg = PC.CorCinzaEscuro)
