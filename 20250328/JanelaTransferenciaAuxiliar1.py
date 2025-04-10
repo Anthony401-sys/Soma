@@ -100,6 +100,7 @@ class JanelaTransferenciaAuxiliar1(JanelaTransferenciaAuxiliar2):
 		self.ContainerFrameTransferenciaContaDestino_Row2.columnconfigure(0, weight = 1)		
 		#self.ContainerFrameTransferenciaContaDestino_Row2.columnconfigure(1, weight = 1)		
 		self.ContainerFrameTransferenciaContaDestino_Row2.grid(row = 2, column = 0,sticky = tk.EW)
+
 		CamposValores = tk.Frame(
 			self.ContainerFrameTransferenciaContaDestino_Row1,
 			bg = self.PalhetaCores[4],		
@@ -116,7 +117,7 @@ class JanelaTransferenciaAuxiliar1(JanelaTransferenciaAuxiliar2):
 			text = "Valor a transferir:"
 			)
 		Valor_Transferir.grid(row = 0, column = 0, pady = 5)	
-		self.Entry_ValorTransferir = tk.Entry(CamposValores)		
+		self.Entry_ValorTransferir = tk.Entry(CamposValores)
 		self.Entry_ValorTransferir.grid(row = 0, column=1)			
 		Conferencia_senha = tk.Label(
 			CamposValores,
